@@ -12,8 +12,8 @@ public class Director {
     }
 
     public void constructCar(){
-        carBuilder.buildBrake();
         carBuilder.buildCar();
+        carBuilder.buildBrake();
         carBuilder.buildEngine();
         carBuilder.buildSeat();
         carBuilder.buildWheel();

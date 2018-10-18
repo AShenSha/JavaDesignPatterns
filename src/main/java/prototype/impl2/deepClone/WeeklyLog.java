@@ -1,12 +1,14 @@
 package prototype.impl2.deepClone;
 
-import prototype.impl2.shallowClone.Attachment;
+import prototype.impl2.deepClone.Attachment;
+
+import java.io.*;
 
 /**
  * 具体原型类
  * @author ShenSha
  */
-public class WeeklyLog implements Cloneable{
+public class WeeklyLog implements Cloneable, Serializable {
 
     private String name;
     private String date;
@@ -45,16 +47,17 @@ public class WeeklyLog implements Cloneable{
         this.attachment = attachment;
     }
 
-    @Override
-    public WeeklyLog clone(){
-        Object obj = null;
-        try {
-            obj = super.clone();
-            return (WeeklyLog) obj;
-        } catch (CloneNotSupportedException e) {
-            System.out.println("不支持被复制");
-            return null;
-        }
+
+    public WeeklyLog deepClone() throws IOException, ClassNotFoundException {
+
+        //将对象写入流中
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
+        objectOutputStream.writeObject(this);
+        //将对象从流中读出
+        ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(byteArrayOutputStream.toByteArray());
+        ObjectInputStream objectInputStream = new ObjectInputStream(byteArrayInputStream);
+        return (WeeklyLog) objectInputStream.readObject();
 
     }
 }

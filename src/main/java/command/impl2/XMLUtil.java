@@ -4,11 +4,9 @@ package command.impl2;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
 import javax.xml.parsers.*;
 import java.io.File;
-import java.io.IOException;
 
 /**
  * @author ShenSha

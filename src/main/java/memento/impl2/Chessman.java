@@ -24,6 +24,10 @@ public class Chessman {
 
     }
 
+    /**
+     * 悔棋
+     * @param memento
+     */
     public void restoreMemento(ChessMemento memento){
         this.label = memento.getLabel();
         this.x = memento.getX();
